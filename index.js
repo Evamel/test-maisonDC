@@ -14,8 +14,18 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use(fileUpload({
+    
     useTempFiles: true
+    
 }))
+
+
+//Routes
+app.use('/user', require('./routes/userRouter'))
+app.use('/api', require('./routes/categoryRouter'))
+
+
+
 
 //connect to mongodb
 const URI = process.env.MONGODB_URL
