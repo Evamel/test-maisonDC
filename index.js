@@ -24,6 +24,7 @@ app.use(fileUpload({
 app.use('/user', require('./routes/userRouter'))
 app.use('/api', require('./routes/categoryRouter'))
 app.use('/api', require('./routes/upload'))
+app.use('/api', require('./routes/productRouter'))
 
 
 
@@ -46,7 +47,7 @@ app.get('/', (req, res) =>{
 })
 
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5500
 app.listen(PORT, () => {
     console.log('Server is running on port', PORT)
 })
