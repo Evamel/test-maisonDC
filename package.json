@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Evamel/test-maisonDC#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.1",
     "concurrently": "^6.3.0",
