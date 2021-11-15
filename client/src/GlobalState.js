@@ -1,5 +1,5 @@
 import React, {createContext, useState} from 'react';
-import ProductsAPI from './API/ProductsAPI';
+import ProductsAPI from './api/ProductsAPI';
 
 export const GlobalState = createContext()
 
@@ -9,7 +9,7 @@ export const DataProvider = ({children}) => {
     ProductsAPI()
     const state = {
         token: [token, setToken],
-        productsAPI: ProductsAPI
+        productsAPI: ProductsAPI()
     }
 
     return <GlobalState.Provider value={state}>

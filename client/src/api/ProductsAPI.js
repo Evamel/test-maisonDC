@@ -9,11 +9,11 @@ export default function ProductsAPI() {
         setProducts(res.data.products)
     }
 
-    useEffect(() => {
+    useEffect(() =>{
         getProducts()
     },[])
 
-    return{
+    return {
         products: [products, setProducts]
     }
 }
