@@ -11,7 +11,7 @@ export default function Pages() {
     return (
         <Routes>
         <Route path="/" element={<Products />} />
-        <Route path="/detail:id" element={<DetailProduct />} />
+        <Route path="/detail/:id" element={<DetailProduct />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} /> 
