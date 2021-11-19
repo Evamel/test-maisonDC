@@ -42,12 +42,12 @@ export default function DetailProduct() {
             <div className="products">
                 {
                     products.map(product =>{
-                        return product.category === detailProduct.cateogry
-                            ? <ProductItem key={product._id} product={product}/> :null
+                        return product.category === detailProduct.category
+                            ? <ProductItem key={product._id} product={product}/> : null
                     })
                 }
             </div>
         </div>
-        </>
+    </>
     )
 }
