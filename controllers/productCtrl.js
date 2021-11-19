@@ -110,5 +110,4 @@ updateProduct: async(req, res) => {
 }
 }
 
-
 module.exports = productCtrl
