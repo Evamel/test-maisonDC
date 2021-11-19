@@ -13,7 +13,7 @@ cloudinary.config({
 })
 
 //Upload images
-router.post('/upload', auth, authAdmin, (req, res) =>{
+router.post('/upload', (req, res) =>{
     try {
         console.log(req.files)
         if(!req.files || Object.keys(req.files).length === 0)
@@ -21,7 +21,7 @@ router.post('/upload', auth, authAdmin, (req, res) =>{
 
         const file = req.files.file;
         if(file.size > 1024*1024)
-        removeTmp(file.tempFilePath)
+        // removeTmp(file.tempFilePath)
         return res.status(400).json({msg: 'File too big'})
 
         if(file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png')
@@ -29,7 +29,7 @@ router.post('/upload', auth, authAdmin, (req, res) =>{
 
         cloudinary.v2.uploader.upload(file.tempFilePath, {folder: "test MaisonDC"}, async(err, result) => {
             if(err) throw err;
-            removeTmp(file.tempFilePath)
+            // removeTmp(file.tempFilePath)
 
             res.json({public_id: result.public_id, url: result.secure_url})
         })
@@ -40,7 +40,7 @@ router.post('/upload', auth, authAdmin, (req, res) =>{
 })
 
 //Delete image
-router.post('/destroy', auth, authAdmin, (req, res) =>{
+router.post('/destroy', (req, res) =>{
 try {
     const {public_id} = req.body;
     if(!public_id) 
