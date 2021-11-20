@@ -44,4 +44,8 @@ button{
 
 
 /* PRODUCT ITEM */
-@import url("./components/mainpages/utils/productItems/productsItem.css");
+@import url("./components/mainpages/utils/productItem/productItem.css");
+
+
+/* DETAIL PRODUCT */
+@import url("./components/mainpages/detailProduct/detailProduct.css");
