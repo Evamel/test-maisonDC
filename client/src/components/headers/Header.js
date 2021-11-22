@@ -43,7 +43,7 @@ export default function Header() {
             </div>
             <div className="logo">
                 <h1>
-                    <Link to="/">{isAdmin ? 'Admin' : 'MAISON DC'}</Link>
+                    <Link to="/">{isAdmin ? 'Admin' : 'Admin'}</Link>
                 </h1>
             </div>
             <ul>
