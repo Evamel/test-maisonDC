@@ -72,7 +72,8 @@ createProduct: async(req, res) => {
 
         const newProduct = new Products({
             product_id,
-            title: title.toLowerCase,
+            // title: title.toLowerCase,
+            title,
             price,
             description,
             content,
