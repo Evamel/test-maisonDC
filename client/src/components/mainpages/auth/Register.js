@@ -19,7 +19,7 @@ export default function Register() {
 
             localStorage.setItem('firstLogin', true)
 
-            window.location.herf ="/";
+            window.location.href ="/";
         }catch (err) {
             alert(err.response.data.msg)
         }

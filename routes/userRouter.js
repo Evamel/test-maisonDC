@@ -11,6 +11,8 @@ router.get('/logout', userCtrl.logout)
 
 router.get('/refresh_token', userCtrl.refreshToken)
 
-router.get('/infor', auth, userCtrl.getUser)
+router.get('/infor', userCtrl.getUser)
 
 module.exports = router
+
+// AJOUTER auth, !!!!!!!!!!!!! après le /infor !!!!!!

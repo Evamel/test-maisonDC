@@ -12,7 +12,7 @@ try {
     next()
     
 } catch (err) {
-    return res.status(500).json({msg: err.message})
+    return res.status(506).json({msg: err.message})
 }
 }
 

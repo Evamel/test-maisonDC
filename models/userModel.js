@@ -10,7 +10,9 @@ name: {
 email: {
     type: String,
     required: true,
+    unique: true,
     trim: true
+    // change trim => unique:true
 },
 
 password: {
@@ -20,7 +22,8 @@ password: {
 
 role:{
     type: Number,
-    defalut: 0
+    default: 0,
+    // required: true
 },
 
 cart:{

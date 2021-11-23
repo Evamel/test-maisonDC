@@ -10,6 +10,7 @@ export default function Header() {
     const state = useContext(GlobalState)
     const [isLogged, setIsLogged] = state.userAPI.isLogged
     const [isAdmin, setIsAdmin] = state.userAPI.isAdmin
+    // console.log(state)
 
     const logoutUser = async () =>{
         await axios.get('/user/logout')
@@ -43,7 +44,7 @@ export default function Header() {
             </div>
             <div className="logo">
                 <h1>
-                    <Link to="/">{isAdmin ? 'Admin' : 'Admin'}</Link>
+                    <Link to="/">{isAdmin ? 'Admin' : 'Maison DC'}</Link>
                 </h1>
             </div>
             <ul>
