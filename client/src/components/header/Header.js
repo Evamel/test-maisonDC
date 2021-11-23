@@ -10,7 +10,7 @@ export default function Header() {
     return (
         <header>
             <div className= "menu">
-                <img src={Menu} alt="" width="30" />
+                <img src={Menu} alt="Menu" width="30" />
             </div>
 
             <div className= "logo">
@@ -19,11 +19,15 @@ export default function Header() {
                 </h1>
             </div>
 
-            <ul>
+            <ul className="navigation">
+                {/* Adding some links in the navigation */}
+                <li>Accueil</li>
+                <li>Coaching déco</li>
                 <li><Link to="/">Produits</Link></li>
-                <li><Link to="/login">Login / Register</Link></li>
-
-                <li><img src={Close} alt="" width="30" className="menu" /></li>
+                <li>Inspiration</li>
+                <li className="Tologin"><Link to="/login">Se connecter</Link></li>
+                <li><img src={Close} alt="Une croix" width="20" className="menu" /></li>
+                <li>Contact</li>
             </ul>
 
             <div className= "cart">

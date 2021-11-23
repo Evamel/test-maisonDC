@@ -6,6 +6,7 @@ import Login from './auth/Login'
 import Register from './auth/Register'
 import Cart from './cart/Cart'
 import NotFound from './utils/not_found/NotFound'
+import Home from './Home'
 
 export default function Pages() {
     return (
@@ -18,6 +19,8 @@ export default function Pages() {
             <Route path="/cart" element={<Cart />} />
 
             <Route path="*" element={<NotFound />} />
+
+            <Route path="/Home" element={<Home />} />
         </Routes>
     )
 }
