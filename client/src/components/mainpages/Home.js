@@ -1,13 +1,13 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import DecorationDInterieur from '../DecorationDInterieur'
 
 const Home = () => {
     return (
         <div className="home">
-            {/* Main page */}
             <>
-                    <h2>Ceci est un test</h2>
-
+                {/* Part 1 */}
+                <DecorationDInterieur/>
             </>
         </div>
     );
