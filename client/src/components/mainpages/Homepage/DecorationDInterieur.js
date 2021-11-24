@@ -21,10 +21,10 @@ const DecorationDInterieur = () => {
             {/* Part 2 */}
             <div className="DecorationDInterieur_right">
                 {/* Images */}
-                <img src={Logo} width="200rem"/>
-                <img src={Cadre} width="250rem"/>
-                <img src={Salon} width="200rem"/>
-                <img src={Lumiere} width="200rem"/>
+                <img src={Cadre} className="squareimg" alt="Image de cadre"/>
+                <img src={Logo} className="logoimg" alt="Logo de la maison DC"/>
+                <img src={Salon} className="salonimg" alt="Image de salon décoré"/>
+                <img src={Lumiere} className="squareimg" alt="Image de lampe"/>
             </div>
         </div>
     );

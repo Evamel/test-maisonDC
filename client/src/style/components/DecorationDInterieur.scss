@@ -1,11 +1,12 @@
 .DecorationDInterieur{
     border: solid 1px green;
     background-color: $lightbrown;
+    height: 60rem;
     display: flex;
     flex-direction: row;
 
     .DecorationDInterieur_left{
-        border: solid 1px green;
+        border: solid 1px rgb(118, 17, 128);
         width: 30rem;
         margin: auto;
 
@@ -28,4 +29,32 @@
         border: solid 1px red;
         margin: auto;
         }
+
+    .squareimg{
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover; /* Do not distort the image */
+        border-radius: 0.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .logoimg{
+        width : 20rem;
+        position: absolute;
+        transform: translateY(-15rem) translateX(12rem) rotate(-15deg);
+        z-index: 1;
+    }
+
+    /* Adding a margin left and right */
+    .salonimg{
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover; /* Do not distort the image */
+        border-radius: 0.5rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        position: relative;
+        z-index: 2;
+    }
 }
