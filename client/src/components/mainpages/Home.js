@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import DecorationDInterieur from '../DecorationDInterieur'
+import DecorationDInterieur from './Homepage/DecorationDInterieur'
 
 const Home = () => {
     return (
