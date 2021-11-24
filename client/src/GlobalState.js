@@ -9,8 +9,8 @@ export const DataProvider = ({children}) => {
 
 
     const refreshToken = async () =>{
-        const res = await axios.get('/user/refresh_token')
-        setToken(res.data.accesstoken)
+        const token = await axios.get('/user/refresh_token')
+        console.log(token)
     }
 
     useEffect(() =>{
