@@ -13,6 +13,7 @@ cloudinary.config({
 })
 
 //Upload images
+// router.post('/upload', auth, authAdmin, (req, res) =>{
 router.post('/upload', (req, res) =>{
     try {
         console.log(req.files)
@@ -40,6 +41,7 @@ router.post('/upload', (req, res) =>{
 })
 
 //Delete image
+// router.post('/destroy', auth, authAdmin, (req, res) =>{
 router.post('/destroy', (req, res) =>{
 try {
     const {public_id} = req.body;

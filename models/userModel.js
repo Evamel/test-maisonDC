@@ -10,7 +10,9 @@ name: {
 email: {
     type: String,
     required: true,
+    unique: true,
     trim: true
+    // change trim => unique:true
 },
 
 password: {

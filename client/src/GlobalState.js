@@ -1,16 +1,19 @@
-import React, {createContext, useState, useEffect} from 'react';
-import ProductsAPI from './api/ProductsAPI';
-import axios from 'axios';
+import React, {createContext, useState, useEffect} from 'react'
+import ProductsAPI from './api/ProductsAPI'
+import UserAPI from './api/UserAPI'
+import axios from 'axios'
 
 export const GlobalState = createContext()
 
-export const DataProvider = ({children}) => {
+
+export const DataProvider = ({children}) =>{
     const [token, setToken] = useState(false)
 
-
     const refreshToken = async () =>{
-        const token = await axios.get('/user/refresh_token')
-        console.log(token)
+        const res = await axios.get('/user/refresh_token')
+
+
+        setToken(res.data.accesstoken) 
     }
 
     useEffect(() =>{
@@ -18,13 +21,16 @@ export const DataProvider = ({children}) => {
         if(firstLogin) refreshToken()
     },[])
 
-    ProductsAPI()
-    const state = {
+    
+    const state ={
         token: [token, setToken],
-        productsAPI: ProductsAPI()
+        productsAPI: ProductsAPI(),
+        userAPI: UserAPI(token)
     }
 
-    return <GlobalState.Provider value={state}>
-        {children}
-    </GlobalState.Provider>
+    return(
+        <GlobalState.Provider value={state}>
+            {children}
+        </GlobalState.Provider>
+    ) 
 }

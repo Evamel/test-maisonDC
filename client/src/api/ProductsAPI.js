@@ -13,7 +13,8 @@ export default function ProductsAPI() {
         getProducts()
     },[])
 
+
     return {
-        products: [products, setProducts]
+    products: [products, setProducts]
     }
 }

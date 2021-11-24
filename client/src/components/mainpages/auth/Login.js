@@ -8,7 +8,7 @@ export default function Login() {
     })
 
     const onChangeInput =  e =>{
-        const {name, value} = e.target;
+        const {name, value} = e.target; void
         setUser({...user, [name]:value})
     }
 
@@ -19,7 +19,7 @@ export default function Login() {
 
             localStorage.setItem('firstLogin', true)
 
-            window.location.href = "/";
+            window.location.href ="/";
         }catch (err) {
             alert(err.response.data.msg)
         }

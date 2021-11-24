@@ -1,8 +1,8 @@
-import React, {useContext} from 'react'
-import {GlobalState} from "../../GlobalState"
-import Menu from './img/menu.svg'
-import Close from './img/close.svg'
-import Cart from './img/cart.svg'
+import React, { useState, useContext} from 'react'
+import {GlobalState} from '../../GlobalState'
+import Menu from './icon/menu.svg'
+import Close from './icon/close.svg'
+import Cart from './icon/cart.svg'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
