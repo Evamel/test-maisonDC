@@ -4,10 +4,10 @@ import axios from 'axios'
 
 export default function Login() {
     const [user, setUser] = useState({
-        email: '', password: ''
+        email:'', password: ''
     })
 
-    const onChangeInput = e =>{
+    const onChangeInput =  e =>{
         const {name, value} = e.target;
         setUser({...user, [name]:value})
     }
@@ -20,7 +20,7 @@ export default function Login() {
             localStorage.setItem('firstLogin', true)
 
             window.location.href = "/";
-        } catch (err) {
+        }catch (err) {
             alert(err.response.data.msg)
         }
     }
@@ -28,7 +28,8 @@ export default function Login() {
     return (
         <div className="login-page">
             <form onSubmit={loginSubmit}>
-                <input type="email" name="email" required
+                <h2>Login</h2>
+                <input type="email" name="email" required 
                 placeholder="Email" value={user.email} onChange={onChangeInput} />
 
                 <input type="password" name="password" required autoComplete="on"
