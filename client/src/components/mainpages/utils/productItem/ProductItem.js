@@ -14,7 +14,6 @@ export default function ProductItem({product, isAdmin}) {
                 <span>{product.price}€</span>
                 <p>{product.description}</p>
             </div>
-
             <BtnRender product={product} />
         </div>
     )
