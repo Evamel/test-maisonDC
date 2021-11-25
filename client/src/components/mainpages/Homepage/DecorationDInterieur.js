@@ -14,7 +14,6 @@ const DecorationDInterieur = () => {
         <div className="DecorationDInterieur">
 
 
-
                 {/* Part 1 */}
                 <div className="DecorationDInterieur_left">
                     <h1 className="DecorationDInterieurh1">Décoration d'intérieur à Hélécine</h1>
@@ -29,10 +28,6 @@ const DecorationDInterieur = () => {
                     <img src={Salon} className="salonimg" alt="Image de salon décoré"/>
                     <img src={Lumiere} className="squareimg" alt="Image de lampe"/>
                 </div>
-
-
-
-
 
         </div>
     );
