@@ -56,6 +56,7 @@ export default function UserAPI(token) {
 
         const check = cart.every(item =>{
             return item._id !== product._id
+            // return item.headers !== product.headers
         })
 
         if(check){
@@ -69,6 +70,7 @@ export default function UserAPI(token) {
     return {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
+        // cart: [cart, setCart],
         addCart: addCart
     }
 }
