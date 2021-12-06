@@ -113,12 +113,27 @@ getUser: async (req, res) => {
         // const user = await Users.findOne({username: req.body.username})
         // const user = await Users.findOne({name: req.body.username})
         const user = await Users.findOne({_id: req.headers.id})
-        if(!user) return res.status(400).json({msg: 'User does not exist'})
+        if(!user) return res.status(400).json({msg: 'User does not exist.'})
 
         res.json(user)
     } catch (err) {
         return res.status(500).json({msg: err.message})  
     } 
+},
+addCart: async (req, res) =>{
+    console.log(req.headers)
+    try {
+        const user = await Users.findOne({_id: req.headers.id})
+        if(!user) return res.status(410).json({msg: 'User does not exist.'})
+
+        await Users.findOneAndUpdate({_id: req.headers.id}, {
+            cart: req.body.cart
+        })
+
+        return res.json({msg: 'Added to cart'})
+    } catch (err) {
+        return res.status(510).json({msg: err.message})
+    }
 }
 }
 

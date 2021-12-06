@@ -1,10 +1,11 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {GlobalState} from '../../../GlobalState'
 import {Link} from 'react-router-dom'
 
 export default function Cart() {
     const state = useContext(GlobalState)
     const [cart] = state.userAPI.cart
+    const [total,setTotal] = useState(0)
 
     if(cart.length === 0)
         return <h2 style={{textAlign:"center", fontSize: "5rem"}}>Cart Empty</h2>
@@ -36,7 +37,7 @@ export default function Cart() {
             }
 
             <div className="total">
-                <h3>Total: 0 €</h3>
+                <h3>Total: {total} €</h3>
                 <Link to="#!">Payment</Link>
             </div>
         </div>
