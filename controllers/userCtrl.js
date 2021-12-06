@@ -109,7 +109,8 @@ getUser: async (req, res) => {
     console.log(req, res, Users)
     try {
         // const user = await Users.findById(req.user.id).select('-password')
-        const user = await Users.findOne({username: req.body.username})
+        // const user = await Users.findOne({username: req.body.username})
+        const user = await Users.findOne({_id: req.headers.id})
         if(!user) return res.status(400).json({msg: 'User does not exist'})
 
         res.json(user)
