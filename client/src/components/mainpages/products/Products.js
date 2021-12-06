@@ -15,7 +15,6 @@ export default function Products() {
             {
                 products.map(product => {
                     return <ProductItem key={product._id} product={product}
-                    // return <ProductItem key={product.headers} product={product}
                     isAdmin={isAdmin}/>
                 })
             } 

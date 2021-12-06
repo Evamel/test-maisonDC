@@ -52,11 +52,10 @@ export default function UserAPI(token) {
     // },[token])
 
     const addCart = async (product) =>{
-        if(!isLogged) return ("please login to continue buying")
+        if(!isLogged) return alert("please login to continue buying")
 
         const check = cart.every(item =>{
             return item._id !== product._id
-            // return item.headers !== product.headers
         })
 
         if(check){
@@ -70,7 +69,7 @@ export default function UserAPI(token) {
     return {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
-        // cart: [cart, setCart],
+        cart: [cart, setCart],
         addCart: addCart
     }
 }
