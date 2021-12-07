@@ -1,10 +1,12 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../../GlobalState'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 export default function Cart() {
     const state = useContext(GlobalState)
     const [cart,setCart] = state.userAPI.cart
+    const [token] =state.token
     const [total, setTotal] = useState(0)
 
 
@@ -21,6 +23,18 @@ export default function Cart() {
         getTotal()
     },[cart])
 
+
+    const addToCart = async () =>{
+        const jwt = require('jsonwebtoken')
+
+            var e = jwt.decode(token);
+
+            await axios.patch('/user/addcart',{cart}, {
+                headers: e
+            })
+        
+    }
+
     const increment = (id) =>{
         cart.forEach(item =>{
             if(item._id === id){
@@ -28,8 +42,8 @@ export default function Cart() {
             }
         })
 
-
         setCart([...cart])
+        addToCart()
     }
 
     const decrement = (id) =>{
@@ -41,6 +55,7 @@ export default function Cart() {
 
 
         setCart([...cart])
+        addToCart()
     }
 
     const removeProduct = id =>{
@@ -52,6 +67,7 @@ export default function Cart() {
             })
 
             setCart([...cart])
+            addToCart()
         }
     }
     if(cart.length === 0)
@@ -62,7 +78,7 @@ export default function Cart() {
             {
                 cart.map( product => (
                     <div className="detail cart" key={product._id}>
-                        <img src={product.images.url} alt="" className="img_container"/>
+                        <img src={product.images.url} alt=""/>
 
                         <div className="box-detail">
                             <h2>{product.title}</h2>
