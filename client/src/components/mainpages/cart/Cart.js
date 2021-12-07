@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../../GlobalState'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import axios from 'axios'
+import PayPal from './PayPal'
 
 export default function Cart() {
     const state = useContext(GlobalState)
@@ -104,7 +105,8 @@ export default function Cart() {
 
             <div className="total">
                 <h3>Total: {total} €</h3>
-                <Link to="#!">Payment</Link>
+                {/* <Link to="#!">Payment</Link> */}
+                <PayPal />
             </div>
         </div>
     )
