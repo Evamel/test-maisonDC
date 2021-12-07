@@ -12,7 +12,8 @@ router.get('/logout', userCtrl.logout)
 router.get('/refresh_token', userCtrl.refreshToken)
 
 router.get('/infor', userCtrl.getUser)
+// AJOUTER auth, !!!!!!!!!!!!! après le /infor !!!!!!
+
+router.patch('/addcart', userCtrl.addCart)
 
 module.exports = router
-
-// AJOUTER auth, !!!!!!!!!!!!! après le /infor !!!!!!
