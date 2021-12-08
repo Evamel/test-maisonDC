@@ -87,6 +87,7 @@ export default function Cart() {
         })
 
         setCart([])
+        addToCart()
         alert("You have successfully placed an order.")
     }
 
