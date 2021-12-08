@@ -75,6 +75,19 @@ export default function Cart() {
 
     const tranSuccess = async(payment) => {
         console.log(payment)
+
+        const jwt = require('jsonwebtoken')
+
+        var e = jwt.decode(token);
+
+        const {paymentID, address} = payment;
+
+        await axios.post('/api/payment', {cart, paymentID, address}, {
+            headers: e
+        })
+
+        setCart([])
+        alert("You have successfully placed an order.")
     }
 
 
