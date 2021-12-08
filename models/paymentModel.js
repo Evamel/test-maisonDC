@@ -29,7 +29,9 @@ const paymentSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-}, {timestamps: true
+}, {
+    timestamps: true
 })
 
-module.export = mongoose.model("Payments", paymentSchema)
+
+module.exports = mongoose.model("Payments", paymentSchema)

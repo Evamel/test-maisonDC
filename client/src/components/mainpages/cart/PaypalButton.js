@@ -39,16 +39,21 @@ export default class PaypalButton extends React.Component {
         //   => https://developer.paypal.com/docs/classic/lifecycle/goingLive/
  
         // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
-let style = {
-    size: 'small',
-    color: 'blue',
-    shape: 'rect',
-    label: 'checkout',
-    tagline: false
-}
+        let style = {
+            size: 'small',
+            color: 'blue',
+            shape: 'rect',
+            label: 'checkout',
+            tagline: false
+        }
 
         return (
-            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} style={style}/>
+            <PaypalExpressBtn 
+            env={env} client={client} 
+            currency={currency} 
+            total={total} onError={onError} 
+            onSuccess={onSuccess} onCancel={onCancel} 
+            style={style} />
         );
     }
 }

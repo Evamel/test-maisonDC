@@ -2,18 +2,16 @@ const Payments = require('../models/paymentModel')
 const Users = require('../models/userModel')
 const Products = require('../models/productModel')
 
+
 const paymentCtrl = {
-    getPayments: async(req, res) =>{
+    getPayments: async(req, res) => {
         try {
             const payments = await Payments.find()
             res.json(payments)
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(515).json({msg: err.message})
         }
     },
-
-
-
     createPayment: async(req, res) => {
         try {
             const user = await Users.findOne({_id: req.headers.id}).select('name email')
@@ -26,7 +24,6 @@ const paymentCtrl = {
                 headers_id: _id, name, email, cart, paymentID, address
             })
 
-            // console.log(newPayment)
             res.json({newPayment})
 
         } catch (err) {
