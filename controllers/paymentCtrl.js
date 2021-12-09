@@ -33,7 +33,6 @@ const paymentCtrl = {
         }
     }
 
-
     // createPayment: async(req, res) => {
     //     try {
     //         const user = await Users.findById(req.user.id).select('name email')
@@ -55,7 +54,6 @@ const paymentCtrl = {
     //     }
     // }
 }
-
 
 const sold = async(id, quantity, oldSold) =>{
     await Products.findOneAndUpdate({_id: id},
