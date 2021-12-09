@@ -26,7 +26,7 @@ export default function Cart() {
    
     },[cart])
 
-    const addToCart = async () =>{
+    const addToCart = async (cart) =>{
         const jwt = require('jsonwebtoken')
 
         var e = jwt.decode(token);
@@ -45,7 +45,7 @@ export default function Cart() {
 
 
         setCart([...cart])
-        addToCart()
+        addToCart(cart)
     }
 
     const decrement = (id) =>{
@@ -57,7 +57,7 @@ export default function Cart() {
 
 
         setCart([...cart])
-        addToCart()
+        addToCart(cart)
     }
 
     const removeProduct = id =>{
@@ -69,7 +69,7 @@ export default function Cart() {
             })
 
             setCart([...cart])
-            addToCart()
+            addToCart(cart)
         }
     }
 
@@ -87,7 +87,7 @@ export default function Cart() {
         })
 
         setCart([])
-        addToCart()
+        addToCart([])
         alert("You have successfully placed an order.")
     }
 
@@ -135,5 +135,3 @@ export default function Cart() {
         </div>
     )
 }
-
-

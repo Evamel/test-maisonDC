@@ -24,6 +24,10 @@ const paymentCtrl = {
                 user_id: _id, name, email, cart, paymentID, address
             })
 
+            cart.filter(item => {
+                return sold(item._id, item.quantity, item.sold)
+            })
+
             console.log(newPayment)
             await newPayment.save() 
             res.json({newPayment})
@@ -33,7 +37,6 @@ const paymentCtrl = {
         }
     }
 }
-
 
 const sold = async(id, quantity, oldSold) =>{
     await Products.findOneAndUpdate({_id: id},
