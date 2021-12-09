@@ -14,28 +14,24 @@ const paymentCtrl = {
     },
     createPayment: async(req, res) => {
         try {
-            const user = await Users.findOne({_id: req.headers.id}).select('name email')
+            const user = await Users.findById({_id: req.headers.id}).select('name email')
             if(!user) return res.status(415).json({msg: "User does not exist."})
 
-            const {cart, paymentID, address} = req.body
-            const {_id, name, email} = headers;
+            const {cart, paymentID, address} = req.body;
+            const {_id, name, email} = user;
 
             const newPayment = new Payments({
-                headers_id: _id, name, email, cart, paymentID, address
+                user_id: _id, name, email, cart, paymentID, address
             })
 
+            console.log(newPayment)
+            await newPayment.save() 
             res.json({newPayment})
 
         } catch (err) {
             return res.status(515).json({msg: err.message})
         }
     }
-
-
-
-
-
-
 
 
     // createPayment: async(req, res) => {
