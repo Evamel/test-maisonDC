@@ -4,6 +4,7 @@ const authAdmin = async (req, res, next) => {
 try {
     //Getting the user informations by id
     const user = await Users.findOne({
+        // _id: req.headers.id
         _id: req.user.id
     })
     if(user.role === 0)
@@ -12,7 +13,7 @@ try {
     next()
     
 } catch (err) {
-    return res.status(500).json({msg: err.message})
+    return res.status(506).json({msg: err.message})
 }
 }
 
