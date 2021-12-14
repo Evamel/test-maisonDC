@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 export default function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [cart, setCart] = useState([])
+    const [history, setHistory] = useState([])
+    const [callback, setCallback] = useState(false)
     
 
     useEffect(() =>{
@@ -55,6 +57,22 @@ export default function UserAPI(token) {
     //     }
     // },[token])
 
+    useEffect(() => {
+        if(token){
+            const jwt = require('jsonwebtoken')
+
+            var e = jwt.decode(token);
+            
+            const getHistory = async() =>{
+                const res = await axios.get('/user/history', {
+                    headers: e
+                })
+                setHistory(res.data)
+            }
+            getHistory()
+        }
+    },[token, callback])
+
     const addCart = async (product) =>{
         if(!isLogged) return alert("please login to continue buying")
 
@@ -82,6 +100,8 @@ export default function UserAPI(token) {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         cart: [cart, setCart],
-        addCart: addCart
+        addCart: addCart,
+        history: [history, setHistory],
+        callback: [callback, setCallback]
     }
 }

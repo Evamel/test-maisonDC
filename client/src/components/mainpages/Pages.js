@@ -4,6 +4,8 @@ import Products from './products/Products'
 import DetailProduct from './detailProduct/DetailProduct'
 import Login from './auth/Login'
 import Register from './auth/Register'
+import OrderHistory from './history/OrderHistory'
+import OrderDetails from './history/OrderDetails'
 import Cart from './cart/Cart'
 import NotFound from './utils/not_found/NotFound'
 
@@ -20,7 +22,11 @@ export default function Pages() {
         <Route path="/detail/:id" element={<DetailProduct />} />
 
         <Route path="/login" element={isLogged ? <NotFound/> : <Login/>} />
-        <Route path="/register" element={isLogged ? <NotFound/> : <Register/>} /> 
+        <Route path="/register" element={isLogged ? <NotFound/> : <Register/>} />
+
+        <Route path="/history" element={isLogged ? <OrderHistory/> : <NotFound/>} />
+        <Route path="/history/:id" element={isLogged ? <OrderDetails/> : <NotFound/>} />  
+
         <Route path="/cart" element={<Cart />} />
 
         <Route path="*" element={<NotFound />} />

@@ -8,6 +8,7 @@ export default function Cart() {
     const state = useContext(GlobalState)
     const [cart,setCart] = state.userAPI.cart
     const [token] = state.token
+    const [callback, setCallback] = state.userAPI.callback
     const [total, setTotal] = useState(0)
 
 
@@ -26,7 +27,7 @@ export default function Cart() {
    
     },[cart])
 
-    const addToCart = async () =>{
+    const addToCart = async (cart) =>{
         const jwt = require('jsonwebtoken')
 
         var e = jwt.decode(token);
@@ -45,7 +46,7 @@ export default function Cart() {
 
 
         setCart([...cart])
-        addToCart()
+        addToCart(cart)
     }
 
     const decrement = (id) =>{
@@ -57,7 +58,7 @@ export default function Cart() {
 
 
         setCart([...cart])
-        addToCart()
+        addToCart(cart)
     }
 
     const removeProduct = id =>{
@@ -69,12 +70,12 @@ export default function Cart() {
             })
 
             setCart([...cart])
-            addToCart()
+            addToCart(cart)
         }
     }
 
     const tranSuccess = async(payment) => {
-        console.log(payment)
+        // console.log(payment)
 
         const jwt = require('jsonwebtoken')
 
@@ -87,8 +88,9 @@ export default function Cart() {
         })
 
         setCart([])
-        addToCart()
+        addToCart([])
         alert("You have successfully placed an order.")
+        setCallback(!callback)
     }
 
 

@@ -1,4 +1,5 @@
 const Users = require('../models/userModel')
+const Payments = require('../models/paymentModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -133,6 +134,15 @@ addCart: async (req, res) =>{
         return res.json({msg: 'Added to cart'})
     } catch (err) {
         return res.status(510).json({msg: err.message})
+    }
+},
+history: async (req, res) =>{
+    try {
+        const history = await Payments.find({user_id: req.headers.id})
+
+        res.json(history)
+    } catch (err) {
+        return res.status(520).json({msg: err.message})
     }
 }
 }
