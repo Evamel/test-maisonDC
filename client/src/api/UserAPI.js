@@ -51,7 +51,7 @@ export default function UserAPI(token) {
             }
             getHistory();
         }
-    }, [token])
+    }, [token, callback])
 
 
 
