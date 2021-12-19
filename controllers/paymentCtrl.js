@@ -29,8 +29,8 @@ const paymentCtrl = {
             })
 
             console.log(newPayment)
-            await newPayment.save() 
-            res.json({newPayment})
+            await newPayment.save()
+            res.json({msg: "Payment succeed"})
 
         } catch (err) {
             return res.status(515).json({msg: err.message})

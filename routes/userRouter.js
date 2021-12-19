@@ -15,6 +15,8 @@ router.get('/infor', userCtrl.getUser)
 
 router.patch('/addcart', userCtrl.addCart)
 
+router.get('/history', userCtrl.history)
+
 module.exports = router
 
 // AJOUTER auth, !!!!!!!!!!!!! après le /infor et /addcart!!!!!!

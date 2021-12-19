@@ -6,13 +6,13 @@ import Login from './auth/Login'
 import Register from './auth/Register'
 import Cart from './cart/Cart'
 import NotFound from './utils/not_found/NotFound'
+import OrderHistory from './history/OrderHistory'
 
 import {GlobalState} from '../../GlobalState'
 
 export default function Pages() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
-
 
     return (
         <Routes>
@@ -22,6 +22,8 @@ export default function Pages() {
         <Route path="/login" element={isLogged ? <NotFound/> : <Login/>} />
         <Route path="/register" element={isLogged ? <NotFound/> : <Register/>} /> 
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="/history" element={isLogged ? <OrderHistory/> : <NotFound/> } /> 
 
         <Route path="*" element={<NotFound />} />
     </Routes>  

@@ -5,6 +5,7 @@ export default function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [cart, setCart] = useState([])
+    const [history, setHistory] = useState([])
     
 
     useEffect(() =>{
@@ -23,7 +24,6 @@ export default function UserAPI(token) {
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
 
                     setCart(res.data.cart)
-                    console.log(res)
 
 
                 } catch (err) {
@@ -34,6 +34,24 @@ export default function UserAPI(token) {
             getUser()
         }
     },[token]) 
+
+    useEffect(() => {
+        if(token){
+            const jwt = require('jsonwebtoken')
+
+            var e = jwt.decode(token);
+
+            const getHistory = async() => {
+                const res = await axios.get('/user/history', {
+                    headers: e
+                })
+
+                console.log(res)
+            }
+            getHistory();
+        }
+    }, [token])
+
 
 
     // useEffect(() =>{
