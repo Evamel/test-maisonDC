@@ -7,7 +7,7 @@ getCategories: async (req, res) => {
         const categories = await Category.find()
         res.json(categories)
     }catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(566).json({msg: err.message})
     }
 },
 createCategory: async (req, res) => {
@@ -17,7 +17,7 @@ createCategory: async (req, res) => {
 
         const {name} = req.body;
         const category = await Category.findOne({name})
-        if(category) return res.status(400).json({msg: 'This category already exists'})
+        if(category) return res.status(444).json({msg: 'This category already exists'})
         
         const newCategory = new Category({name})
         await newCategory.save()
@@ -25,7 +25,7 @@ createCategory: async (req, res) => {
         
         res.json('Check admin success')
     } catch (err) {
-        return res.status(500).json({msg: err.message}) 
+        return res.status(565).json({msg: err.message}) 
     }
 },
 deleteCategory: async (req, res) =>{
@@ -33,17 +33,19 @@ deleteCategory: async (req, res) =>{
         await Category.findByIdAndDelete(req.params.id)
         res.json({msg: 'Category deleted'})
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(555).json({msg: err.message})
     }
 },
 updateCategory: async (req, res) =>{
     try {
         const {name} = req.body;
+        if(!name) return res.status(454).json({msg: "no completed"})
+
         await Category.findOneAndUpdate({_id: req.params.id}, {name})
 
-        req.json({msg: 'Category updated'})
+        res.json({msg: 'Category updated'})
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(550).json({msg: err.message})
     }
 }
 }
