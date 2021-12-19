@@ -8,7 +8,7 @@ export default function Cart() {
     const state = useContext(GlobalState)
     const [cart,setCart] = state.userAPI.cart
     const [token] = state.token
-    const [callback, setCallback] = state.userAPI.callback
+    // const [callback, setCallback] = state.userAPI.callback
     const [total, setTotal] = useState(0)
 
 
@@ -90,7 +90,7 @@ export default function Cart() {
         setCart([])
         addToCart([])
         alert("You have successfully placed an order.")
-        setCallback(!callback)
+        // setCallback(!callback)
     }
 
 

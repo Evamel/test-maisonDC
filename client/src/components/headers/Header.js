@@ -15,7 +15,7 @@ export default function Header() {
 
     const logoutUser = async () =>{
         await axios.get('/user/logout')
-        localStorage.clear()
+        // localStorage.clear()
         setIsAdmin(false)
         window.location.href = "/";
     }
