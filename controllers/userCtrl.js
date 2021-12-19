@@ -136,13 +136,13 @@ addCart: async (req, res) =>{
         return res.status(510).json({msg: err.message})
     }
 },
-history: async (req, res) => {
+history: async (req, res) =>{
     try {
-        const history = await Payments.find({user_id: req.user.id})
+        const history = await Payments.find({user_id: req.headers.id})
+
         res.json(history)
-        
     } catch (err) {
-        return res.status(550).json({msg: err.message})
+        return res.status(520).json({msg: err.message})
     }
 }
 }

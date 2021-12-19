@@ -18,6 +18,7 @@ const paymentCtrl = {
             if(!user) return res.status(415).json({msg: "User does not exist."})
 
             const {cart, paymentID, address} = req.body;
+
             const {_id, name, email} = user;
 
             const newPayment = new Payments({
@@ -28,9 +29,10 @@ const paymentCtrl = {
                 return sold(item._id, item.quantity, item.sold)
             })
 
-            console.log(newPayment)
-            await newPayment.save()
-            res.json({msg: "Payment succeed"})
+
+            // console.log(newPayment)
+            await newPayment.save() 
+            res.json({msg: "Payment Succes!"})
 
         } catch (err) {
             return res.status(515).json({msg: err.message})
