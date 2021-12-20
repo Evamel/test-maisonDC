@@ -7,8 +7,8 @@ const initialState = {
     product_id: '',
     title: '',
     price: 0,
-    description: 'description provenant du CreateProduct.js',
-    content: 'content du CreateProduct.js',
+    description: 'Enter description here',
+    content: 'Give information about the content here',
     category: ''
 }
 
@@ -19,6 +19,44 @@ export default function CreateProduct() {
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
 
+    const [isAdmin] = state.userAPI.isAdmin
+    const [token] = state.token
+
+    const handleUpload = async i => {
+        const jwt = require('jsonwebtoken')
+
+        var e = jwt.decode(token);
+
+        i.preventDefault()
+
+        try {
+            if(!isAdmin) return alert("You are not an admin")
+            const file = i.target.files[0]
+            
+            if(!file) return alert("This file does not exist.")
+
+            if(file.size > 1024 * 1024) return alert("Size too large")
+
+            if(file.type !== 'image/jpeg' && file.type !== 'image/png') return alert("File format is incorrect")
+
+            let formData = new FormData()
+            formData.append('file', file)
+
+            setLoading(true)
+            const res = await axios.post('/api/upload', formData, {
+                
+
+                headers: {'content-type': 'multipart/form-data', e}
+            })
+
+            setLoading(false)
+            setImages(res.data)
+            
+        } catch (err) {
+            alert(err.response.data.msg)
+        }
+    }
+
     const styleUpload = {
         display: images ? "block" : "none"
     }
@@ -26,11 +64,17 @@ export default function CreateProduct() {
     return (
         <div className='create_product'>
             <div className='upload'>
-                <input type="file" name="file" id="file_up" />
-                <div id="file_img" style={styleUpload}>
-                    <img src="" alt=""/>
-                    <span>X</span>
-                </div>
+                <input type="file" name="file" id="file_up" onChange={handleUpload} />
+                {
+                    loading ? 
+                    <div id="file_img"><Loading /></div> 
+                    : 
+                    <div id="file_img" style={styleUpload}>
+                        <img src={images ? images.url : ''} alt=""/>
+                        <span>X</span>
+                    </div>
+                }
+                
             </div>
             <form>
                 <div className='row'>
