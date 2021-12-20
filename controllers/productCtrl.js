@@ -64,11 +64,11 @@ getProducts: async(req, res) => {
 createProduct: async(req, res) => {
     try {
         const {product_id, title, price, description, content, images, category} = req.body;
-        if(!images) return res.status(400).json({msg: "No image upload"})
+        if(!images) return res.status(479).json({msg: "No image upload"})
 
         const product = await Products.findOne({product_id})
         if(product)
-        return res.status(400).json({msg: "This product already exists"})
+        return res.status(479).json({msg: "This product already exists"})
 
         const newProduct = new Products({
             product_id,
@@ -84,7 +84,7 @@ createProduct: async(req, res) => {
         res.json({msg: "Product created"})
 
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(579).json({msg: err.message})
     }
 },
 

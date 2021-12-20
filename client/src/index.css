@@ -53,3 +53,6 @@ button {
 
 /*  ------------------------- categories ---------------- */
 @import url("./components/mainpages/categories/categories.css");
+
+/*  ------------------------- Create Product ---------------- */
+@import url("./components/mainpages/createProduct/createProduct.css");

@@ -35,7 +35,8 @@ register: async (req, res) => {
 
         res.cookie('refreshtoken', refreshtoken, {
             httpOnly: true,
-            path: '/user/refresh_token'
+            path: '/user/refresh_token',
+            maxAge: 7*24*60*60*1000 // 7d
         })
 
         res.json({accesstoken})
@@ -63,7 +64,8 @@ try{
 
         res.cookie('refreshtoken', refreshtoken, {
             httpOnly: true,
-            path: '/user/refresh_token'
+            path: '/user/refresh_token',
+            maxAge: 7*24*60*60*1000 // 7d
         })
 
         res.json({accesstoken})
@@ -149,7 +151,7 @@ history: async (req, res) =>{
 
 
 const createAccessToken = (user) => {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '11m'})
 }
 const createRefreshToken = (user) => {
     return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
