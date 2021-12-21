@@ -82,6 +82,29 @@ export default function CreateProduct() {
         setProduct({...product, [name]:value})
     }
 
+    const handleSubmit = async i => {
+        const jwt = require('jsonwebtoken')
+
+        var e = jwt.decode(token);
+
+        i.preventDefault()
+        
+        try {
+            if(!isAdmin) return alert ("You are not admin")
+            if(!images) return alert("No image upload")
+
+            await axios.post('/api/products', {...product, images}, {
+                headers: e
+            })
+
+            setImages(false)
+            setProduct(initialState)
+
+        } catch (err) {
+            alert(err.response.data.msg)
+        }
+    }
+
 
     const styleUpload = {
         display: images ? "block" : "none"
@@ -102,7 +125,7 @@ export default function CreateProduct() {
                 }
                 
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className='row'>
                     <label htmlFor="product_id">Product ID</label>
                     <input type="text" name="product_id" id="product_id" required value={product.product_id} onChange={handleChangeInput} />
