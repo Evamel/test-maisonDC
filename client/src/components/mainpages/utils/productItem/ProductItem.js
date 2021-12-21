@@ -1,7 +1,32 @@
 import React from 'react'
 import BtnRender from './BtnRender'
+import axios from 'axios'
 
-export default function ProductItem({product, isAdmin}) {
+export default function ProductItem({product, isAdmin, token, callback, setCallback}) {
+
+    const deleteProduct = async() => {
+        const jwt = require('jsonwebtoken')
+
+        var e = jwt.decode(token);
+
+        try {
+            const destroyImg = axios.post('/api/destroy', {public_id: product.images.public_id}, {
+                headers: e
+            })
+
+            const deleteProduct = axios.delete(`/api/products/${product._id}`, {public_id: product.images.public_id}, {
+                headers: e
+            })
+
+            await destroyImg
+            await deleteProduct
+            setCallback(!callback)
+
+        } catch (err) {
+            alert(err.response.data.msg)
+        }
+    }
+
     return (
         <div className="product_card">
             {
@@ -15,7 +40,7 @@ export default function ProductItem({product, isAdmin}) {
                 <p>{product.description}</p>
             </div>
 
-            <BtnRender product={product} />
+            <BtnRender product={product} deleteProduct={deleteProduct} />
         </div>
     )
 }

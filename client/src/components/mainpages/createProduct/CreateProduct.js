@@ -29,6 +29,7 @@ export default function CreateProduct() {
 
     const [products] = state.productsAPI.products
     const [onEdit, setOnEdit] = useState(false)
+    const [callback, setCallback] = state.productsAPI.callback
 
 
     useEffect(() => {
@@ -134,9 +135,7 @@ export default function CreateProduct() {
             }
 
             
-
-            setImages(false);
-            setProduct(initialState);
+            setCallback(!callback);
             navigate("/");
 
         } catch (err) {
