@@ -92,16 +92,16 @@ export default function CreateProduct() {
             //     headers: e
                 const res = await axios.post('/api/products', {...product, images}, {
                     headers: e
+
+                    
             })
-            // .then(() = async => {
-            //     const res = await axios.get('/api/products')
-            // })
+            
             alert(res.data.msg)
-            console.log(res.data)
 
             setImages(false)
             setProduct(initialState)
             navigate("/")
+            
         } catch (err) {
             alert(err.response.data.msg)
         }
