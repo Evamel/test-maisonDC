@@ -63,6 +63,12 @@ export default function Products() {
     }
 
 
+    const deleteAll = () => {
+        products.forEach(product => {
+            if(product.checked) deleteProduct(product._id, product.images.public_id)
+        })
+    }
+
 
     if(loading) return <div><Loading /></div>
 
@@ -72,7 +78,7 @@ export default function Products() {
             isAdmin && <div className='delete-all'>
                 <span>Select all</span>
                 <input type="checkbox" checked={isCheck} onChange={checkAll} />
-                <button>Delete all the products</button>
+                <button onClick={deleteAll}>Delete all the selection</button>
             </div>
         }
         <div className="products">
