@@ -1,36 +1,50 @@
 import React from 'react'
 import BtnRender from './BtnRender'
-import axios from 'axios'
+// import axios from 'axios'
+// import Loading from '../loading/Loading'
 
-export default function ProductItem({product, isAdmin, token, callback, setCallback}) {
+export default function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
 
-    const deleteProduct = async() => {
-        const jwt = require('jsonwebtoken')
+    // const [loading, setLoading] = useState(false)
 
-        var e = jwt.decode(token);
+    // const deleteProduct = async() => {
+    //     const jwt = require('jsonwebtoken')
 
-        try {
-            const destroyImg = axios.post('/api/destroy', {public_id: product.images.public_id}, {
-                headers: e
-            })
+    //     var e = jwt.decode(token);
 
-            const deleteProduct = axios.delete(`/api/products/${product._id}`, {public_id: product.images.public_id}, {
-                headers: e
-            })
+    //     try {
+    //         setLoading(true)
+    //         const destroyImg = axios.post('/api/destroy', {public_id: product.images.public_id}, {
+    //             headers: e
+    //         })
 
-            await destroyImg
-            await deleteProduct
-            setCallback(!callback)
+    //         const deleteProduct = axios.delete(`/api/products/${product._id}`, {public_id: product.images.public_id}, {
+    //             headers: e
+    //         })
 
-        } catch (err) {
-            alert(err.response.data.msg)
-        }
-    }
+    //         await destroyImg
+    //         await deleteProduct
+    //         setLoading(false)
+    //         setCallback(!callback)
+
+    //     } catch (err) {
+    //         alert(err.response.data.msg)
+    //     }
+    // }
+
+    // const handleCheck = (id) => {
+    //     console.log(id)
+    //     // let newProduct = [...product]
+    //     // newProduct.checked = !newProduct.checked
+    //     // setProducts(newProduct)
+    // }
+
+    // if(loading) return <div className='product_card'><Loading /></div>
 
     return (
         <div className="product_card">
             {
-                isAdmin && <input type="checkbox" checked={product.checked}/>
+                isAdmin && <input type="checkbox" checked={product.checked} onChange={() => handleCheck(product._id)} />
             }
             <img src={product.images.url} alt=""/>
 
