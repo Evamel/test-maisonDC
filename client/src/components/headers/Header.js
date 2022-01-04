@@ -45,7 +45,7 @@ export default function Header() {
             </div>
             <div className="logo">
                 <h1>
-                    <Link to="/">{isAdmin ? 'Admin' : 'Maison DC'}</Link>
+                    <Link to="/">{isAdmin ? 'Admin' : <img src={"Images/Logo.png"} alt="Logo Maison DC"/>}</Link>
                 </h1>
             </div>
             <ul>
@@ -65,9 +65,9 @@ export default function Header() {
             {
                 isAdmin ? '' 
                 :<div className="cart-icon">
-                    <span>{cart.length}</span>
+                    <span className="Number_items">{cart.length}</span>
                     <Link to="/cart">
-                        <img src={Cart} alt="" width="30"/>
+                        <img src={Cart} alt="Nombre de produits dans le panier" width="30"/>
                     </Link>
                 </div>
             }

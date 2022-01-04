@@ -1,0 +1,66 @@
+header{
+  background-color : $white;
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  height: 4rem;
+
+.logo{
+  // border: 1px solid orange;
+  height: 6rem;
+
+  img{
+    height: 5.5rem;
+    margin-top: -2rem;
+    padding-left: 3rem;
+  }
+}
+
+ul{
+  display: flex;
+  // border: 1px solid rgb(41, 85, 41);
+  margin: auto;
+  height: 4rem;
+  line-height: 4rem; // To center
+  margin-right: 5rem;
+
+  li{
+    font-weight: 400;
+    font-family: $Roboto;
+    font-size: 1rem;
+    flex-direction: row;
+    // border: 1px solid red;
+    font-size: 1.25rem;
+    margin-right: 5rem;
+    
+    a:visited{
+        color: $brown;
+    }
+
+    .menu{
+      height: 100%;
+    }
+  }
+}
+
+  .cart-icon{
+    // border: 1px solid purple;
+    height: 4rem;
+    margin-top: 0.1rem;
+    margin-right: 5rem;
+
+    img{
+      height: 3rem;
+    }
+
+    .Number_items{
+      margin-right: 0.5rem;
+      color: $brown;
+      font-size: 1.5rem;
+    }
+  }
+
+}
