@@ -13,6 +13,8 @@ import CreateProduct from './createProduct/CreateProduct'
 
 import {GlobalState} from '../../GlobalState'
 
+import Home from '../Home/Home'
+
 export default function Pages() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
@@ -21,7 +23,10 @@ export default function Pages() {
 
     return (
         <Routes>
-        <Route path="/" element={<Products />} />
+        
+        <Route path="/" element={<Home />}/>
+
+        <Route path="/Products" element={<Products />} />
         <Route path="/detail/:id" element={<DetailProduct />} />
 
         <Route path="/login" element={isLogged ? <NotFound/> : <Login/>} />
