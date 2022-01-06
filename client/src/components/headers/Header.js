@@ -1,10 +1,10 @@
-import React, {useContext} from 'react'
-import {GlobalState} from '../../GlobalState'
-import Menu from './icon/menu.svg'
-import Close from './icon/close.svg'
-import Cart from './icon/cart.svg'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import React, {useContext} from 'react';
+import {GlobalState} from '../../GlobalState';
+import Menu from './icon/menu.svg';
+import Close from './icon/close.svg';
+import Cart from './icon/cart.svg';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export default function Header() {
     const state = useContext(GlobalState)
@@ -49,12 +49,14 @@ export default function Header() {
                 </h1>
             </div>
             <ul>
-                <li><Link to="/">{isAdmin ? 'Products' : 'Shop'}</Link></li>
+            
+                <li>
+                    <Link to="/">{isAdmin ? 'Products' : 'Shop'}</Link></li>
 
                 {isAdmin && adminRouter()}
 
                 {
-                    isLogged ? loggedRouter() : <li><Link to="/login">Login + Register</Link></li>
+                    isLogged ? loggedRouter() : <li className="Login_and_register"><Link to="/login">Login + Register</Link></li>
                 }
 
                 <li>

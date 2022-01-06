@@ -1,69 +1,73 @@
-.Home_Element1{
+    .Home_Element1{
+        background-color: $lightbrown;
+        // border: solid rgb(117, 21, 18) 1px;
+        padding: 5rem;
 
-    max-width: 100%;
-    display: flex;
-    margin-top: 15vh; // To center
-    // border: solid rgb(208, 171, 70) 3px;
-    padding: 5rem;
+        .Home1_Container{
+            display: flex;
 
-    .Home1_left{
-        // border: solid 1px red;
-        width: 28%;
-        vertical-align: middle;
-        padding-right: 5rem;
-
-        h1{
-            text-transform: uppercase;
-            font-weight: 300;
-            font-size: 3.5rem;
-        }
-
-        p{
-            line-height: 1.5;
-            span{
-                font-style: italic;
+            .Home1_left{
+                // border: solid 1px red;
+                width: 28%;
+                vertical-align: middle;
+                padding-right: 5rem;
+                margin-top: 12rem;
+                margin-bottom: 12rem;
+        
+                h1{
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    font-size: 3.5rem;
+                }
+        
+                p{
+                    line-height: 1.5;
+                    span{
+                        font-style: italic;
+                    }
+                }
+        
+                button{
+                    background-color: $brown;
+                    border-radius: 2rem;
+                    font-size: 1rem;
+                    padding: 1rem;
+                    color: $white;
+                    font-weight: 300;
+                    cursor: pointer;
+                    margin-top: 1.5rem;
+                }
+            }
+        
+            .Home1_right{
+                // border: solid 1px rgb(72, 142, 163);
+                width: 72%;
+                display: flex;
+                justify-content: center;
+                padding-top: 5rem;
+                margin-top: 10rem;
+                margin-bottom: 10rem;
+        
+                .Home1_right_logo{
+                    // border: orangered solid 1px;
+                    position: relative;
+                    width : 20rem;
+                    position: absolute;
+                    transform: translateY(-14rem) translateX(11rem) rotate(-15deg);
+                    z-index: 1;
+                }
+        
+                .Home1_right_products{
+                    width: 22rem;
+                    height: 22rem;
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
+                    object-fit: cover; /* Do not distort the image */
+                    border-radius: 0.5rem;
+                    z-index: 1;
+                }
             }
         }
 
-        button{
-            background-color: $brown;
-            border-radius: 2rem;
-            font-size: 1rem;
-            padding: 1rem;
-            color: $white;
-            font-weight: 300;
-            cursor: pointer;
-            margin-top: 1.5rem;
-        }
+    
     }
-
-    .Home1_right{
-        // border: solid 1px rgb(72, 142, 163);
-        width: 72%;
-        display: flex;
-        justify-content: center;
-        // Bodysuit which is the size of the screen
-        min-height: 100%;
-        padding-top: 5rem;
-
-        .Home1_right_logo{
-            // border: orangered solid 1px;
-            position: relative;
-            width : 20rem;
-            position: absolute;
-            transform: translateY(-14rem) translateX(12rem) rotate(-15deg);
-            z-index: -1;
-        }
-
-        .Home1_right_products{
-            width: 22rem;
-            height: 22rem;
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-            object-fit: cover; /* Do not distort the image */
-            border-radius: 0.5rem;
-            z-index: 1;
-        }
-    }
-
-}

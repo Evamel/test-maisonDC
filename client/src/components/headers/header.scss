@@ -6,7 +6,9 @@ header{
   width: 100%;
   display: flex;
   padding: 1rem;
-  height: 4rem;
+  height: 6rem;
+  z-index: 2;
+  // border: 1px solid palevioletred;
 
 .logo{
   // border: 1px solid orange;
@@ -25,7 +27,24 @@ ul{
   margin: auto;
   height: 4rem;
   line-height: 4rem; // To center
-  margin-right: 5rem;
+  margin-right: 3rem;
+
+  a:visited{
+    color: $brown;
+  }
+
+  .Login_and_register{
+    background-color: $brown;
+    color: $white;
+    border-radius: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    a:visited{
+      color: $white;
+      font-weight: 200;
+    }
+  }
 
   li{
     font-weight: 400;
@@ -36,9 +55,9 @@ ul{
     font-size: 1.25rem;
     margin-right: 5rem;
     
-    a:visited{
-        color: $brown;
-    }
+    // a:visited{
+    //     color: $brown;
+    // }
 
     .menu{
       height: 100%;
