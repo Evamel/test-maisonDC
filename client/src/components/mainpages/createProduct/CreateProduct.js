@@ -1,8 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios'
 import {GlobalState} from '../../../GlobalState'
 import Loading from '../utils/loading/Loading'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 
 const initialState = {
     product_id: '',
@@ -10,7 +10,8 @@ const initialState = {
     price: 0,
     description: 'this is the description for create product',
     content: 'this is the content',
-    category: ''
+    category: '',
+    _id: ''
 }
 
 export default function CreateProduct() {
@@ -21,8 +22,28 @@ export default function CreateProduct() {
     const [loading, setLoading] = useState(false)
     const [isAdmin] = state.userAPI.isAdmin
     const [token] = state.token
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const param = useParams()
+    const [products] = state.productsAPI.products
+    const [onEdit, setOnEdit] = useState(false)
+    const [callback, setCallback] = state.productsAPI.callback
 
+    useEffect(() => {
+        if(param.id){
+            setOnEdit(true)
+            products.forEach(product => {
+                if(product._id === param.id) {
+                    setProduct(product)
+                    setImages(product.images)
+                }
+                
+            })
+        }else{
+            setOnEdit(false)
+            setProduct(initialState)
+            setImages(false)
+        }
+    }, [param.id, products])
 
     const handleUpload = async i =>{
         const jwt = require('jsonwebtoken')
@@ -88,18 +109,16 @@ export default function CreateProduct() {
             if(!isAdmin) return alert("you're not an admin")
             if(!images) return alert("No image upload")
 
-            // await axios.post('/api/products', {...product, images}, {
-            //     headers: e
-                const res = await axios.post('/api/products', {...product, images}, {
-                    headers: e
-
-                    
+            if(onEdit){
+                await axios.put(`/api/products/${product._id}`, {...product, images}, {
+                    headers: e                    
             })
-            
-            alert(res.data.msg)
-
-            setImages(false)
-            setProduct(initialState)
+            }else{
+                await axios.post('/api/products', {...product, images}, {
+                    headers: e                    
+            })
+            }
+            setCallback(!callback)
             navigate("/")
             
         } catch (err) {
@@ -128,7 +147,7 @@ export default function CreateProduct() {
                 <div className="row">
                     <label htmlFor="product_id">Product ID</label>
                     <input type="text" name="product_id" id="product_id" required
-                    value={product.product_id} onChange={handleChangeInput}/>
+                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit}/>
                 </div>
 
                 <div className="row">
@@ -169,7 +188,7 @@ export default function CreateProduct() {
                     </select>
                 </div>
 
-                <button type="submit">Create</button>
+                <button type="submit">{onEdit ? "Update" : "Create"}</button>
             </form>
         </div>
     )
