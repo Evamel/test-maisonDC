@@ -35,7 +35,7 @@ class APIfeatures{
 
     paginating(){
         const page = this.queryString.page * 1 || 1
-        const limit = this.queryString.limit * 1 || 5000
+        const limit = this.queryString.limit * 1 || 20
         const skip = (page - 1) * limit;
         this.query = this.query.skip(skip).limit(limit)
         return this;
@@ -56,7 +56,7 @@ getProducts: async(req, res) => {
         })
 
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(577).json({msg: err.message})
     }
 },
 
@@ -92,20 +92,20 @@ deleteProduct: async(req, res) => {
         await Products.findByIdAndDelete(req.params.id)
         res.json({msg: "Product deleted"})
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(549).json({msg: err.message})
     }
 },
 
 updateProduct: async(req, res) => {
     try {
         const {title, price, description, content, images, category} = req.body;
-        if(!images) return res.status(400).json({msg: "No image upload"})
+        if(!images) return res.status(448).json({msg: "No image upload"})
 
         await Products.findByIdAndUpdate({_id: req.params.id}, {title: title.toLowerCase(), price, description, content, images, category})
 
         res.json({msg: "Product update"})
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(548).json({msg: err.message})
     }
 }
 }
