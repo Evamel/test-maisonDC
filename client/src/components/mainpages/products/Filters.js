@@ -11,6 +11,7 @@ export default function Filters() {
 
     const handleCategory = i => {
         setCategory(i.target.value)
+        setSearch('')
     }
 
     return (
@@ -38,8 +39,8 @@ export default function Filters() {
                     <option value=''>Newest</option>
                     <option value='sort=oldest'>Oldest</option>
                     <option value='sort=-sold'>Best sales</option>
-                    <option value='sort=-price'>Price: Hight-low</option>
-                    <option value='sort=price'>Price: low-Hight</option>
+                    <option value='sort=-price'>Price: Hight-Low</option>
+                    <option value='sort=price'>Price: Low-Hight</option>
                 </select>
             </div>
         </div>
