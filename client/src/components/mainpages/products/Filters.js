@@ -33,7 +33,7 @@ export default function Filters() {
             <input type="text" value={search} placeholder="Enter your search!" 
             onChange={i => setSearch(i.target.value.toLowerCase())}/>
 
-            <div className="row">
+            <div className="row sort">
                 <span>Sort By: </span>
                 <select value={sort} onChange={i => setSort(i.target.value)}>
                     <option value=''>Newest</option>
